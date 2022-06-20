@@ -94,7 +94,7 @@ public class MainActivity extends BaseActivity
             }
         });
 
-        appJustOpened = true; // determines whether to show initial screen and start listening
+        appJustOpened = true; // determines whether to show initial panel and start listening
         initializeSkillEvaluator();
         setupVoiceButton();
     }
@@ -292,7 +292,7 @@ public class MainActivity extends BaseActivity
                 speechOutputDevice,
                 graphicalOutputDevice,
                 this);
-        skillEvaluator.showInitialScreen();
+        skillEvaluator.showInitialPanel();
     }
 
     private InputDevice buildPrimaryInputDevice() {

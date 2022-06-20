@@ -23,7 +23,7 @@ import org.dicio.dicio_android.input.SpeechInputDevice.UnableToAccessMicrophoneE
 import org.dicio.dicio_android.input.ToolbarInputDevice;
 import org.dicio.dicio_android.output.graphical.GraphicalOutputUtils;
 import org.dicio.dicio_android.skills.SkillHandler;
-import org.dicio.dicio_android.util.ExceptionUtils;
+import org.dicio.dicio_android.error.ExceptionUtils;
 import org.dicio.dicio_android.util.PermissionUtils;
 import org.dicio.skill.Skill;
 import org.dicio.skill.SkillInfo;
@@ -83,13 +83,13 @@ public class SkillEvaluator implements CleanableUp {
     // Public methods //
     ////////////////////
 
-    public void showInitialScreen() {
-        final View initialScreen = GraphicalOutputUtils.inflate(activity, R.layout.initial_screen);
+    public void showInitialPanel() {
+        final View initialPanel = GraphicalOutputUtils.inflate(activity, R.layout.initial_panel);
 
-        final LinearLayout skillItemsLayout = initialScreen.findViewById(R.id.skillItemsLayout);
+        final LinearLayout skillItemsLayout = initialPanel.findViewById(R.id.skillItemsLayout);
         for (final SkillInfo skillInfo : SkillHandler.getEnabledSkillInfoListShuffled()) {
             final View skillInfoItem
-                    = GraphicalOutputUtils.inflate(activity, R.layout.initial_screen_skill_item);
+                    = GraphicalOutputUtils.inflate(activity, R.layout.initial_panel_skill_item);
 
             ((AppCompatImageView) skillInfoItem.findViewById(R.id.skillIconImageView))
                     .setImageResource(SkillHandler.getSkillIconResource(skillInfo));
@@ -101,7 +101,7 @@ public class SkillEvaluator implements CleanableUp {
             skillItemsLayout.addView(skillInfoItem);
         }
 
-        graphicalOutputDevice.displayTemporary(initialScreen);
+        graphicalOutputDevice.displayTemporary(initialPanel);
     }
 
     @Override
